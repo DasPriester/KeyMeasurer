@@ -5,7 +5,7 @@ University image processing project
 
 This project is a simple image processing application that allows the user to detect and profile a key, resulting in an ID.
 
-This Application uses the MATLAB Application Designer to create a GUI that allows the user to connect a webcam and take a picture or video of a key.
+This application uses the MATLAB Application Designer to create a GUI that allows the user to connect a webcam and take a picture or video of a key.
 
 The application then uses MATLAB's image processing toolbox to detect the key and profile it, resulting in an ID.
 
@@ -19,23 +19,23 @@ The application then uses MATLAB's image processing toolbox to detect the key an
 ### Instructions
 1. Download the repository
 2. Open MATLAB
-3. Open the Project_app.mlapp file
+3. Open the [Project_app.mlapp](Projekt_app.mlapp) file in the MATLAB application designer
 4. Run the application
 
 ## Usage
 ### Getting Started
-1. Select a webcam by clicking on an entry of the _Webcam Selector_
-2. Press the _Start button_ to start feeding the webcam to the application
+1. Select a webcam by clicking on an entry of the [Webcam Selector](#main-tab)
+2. Press the [Start Button](#both-tabs) to start feeding the webcam to the application
 ### Taking a Picture
-1. Press the _Picture button_ to take a picture of the key
-2. When the frame around the camera feed turns green, a key has been detected
-3. Copy the ID from the text box
+1. Press the [Picture Button](#both-tabs) to take a picture of the key
+2. When the frame around the [Camera Feed](#both-tabs) turns green, a key has been detected
+3. Copy the ID from the [ID Field](#both-tabs) 
 ### Taking a Video
-1. Press the _Video button_ to start recording a video of the key
-2. When the frame around the _camera feed_ turns green, a key has been detected
-3. Copy the ID from the _ID field_
+1. Press the [Video Button](#both-tabs) to start recording a video of the key
+2. When the frame around the [Camera Feed](#both-tabs) turns green, a key has been detected
+3. Copy the ID from the [ID Field](#both-tabs) 
 ### Quitting
-1. Press the _Start button_ again to stop the webcam feed
+1. Press the [Start Button](#both-tabs)  again to stop the webcam feed
 2. Close the application or press the stop button inside the MATLAB application designer
 
 ## Help
@@ -48,25 +48,22 @@ The application then uses MATLAB's image processing toolbox to detect the key an
 "My key is not detected (the frame around the camera feed is not green)"
 - Make sure that the key is in the frame of the camera feed (The application will not detect keys that are on the sides of the frame due to the cropping of the image)
 - Check if other keys are detected by the application (The application will only detect one key at a time)
-- Go to the _Debug tab_ and uncheck the _Only valid checboxk_ to see if the key is maybe not matching the validity criteria
+- Go to the [Debug tab](#debug-tab) and uncheck the [Only valid checboxk](#debug-tab) to see if the key is maybe not matching the validity criteria
 
 "The ID keeps changing/is not the same as previous IDs of the same key"
 - Our application uses a simple algorithm to turn the profile of a key into an ID, this algorithm is still in development and might not work at the moment
   
 ### Debugging Tools
-- The _Debug tab_ contains a few tools to help you live edit some of the parameters of the detection algorithm
-- Check the idKey.m file to see how the ID is calculated. MATLAB can be used to debug this file
-- The Applications code can be found in the Projekt_app.mlapp file. Open it in the MATLAB application designer to debug the application
+- The [Debug tab](#debug-tab) contains a few tools to help you live edit some of the parameters of the detection algorithm
+- Check the [idKey.m](idKey.m) file to see how the ID is calculated. MATLAB can be used to debug this file
+- The Applications code can be found in the [Projekt_app.mlapp](Projekt_app.mlapp) file. Open it in the MATLAB application designer to debug the application
 
 ### Buttons and Fields
-- Main tab
+#### Main tab
   - Webcam Selector
     - Location: Top right
     - Description: List of all connected webcams. Select a webcam by clicking on an entry
-  - Camera Feed
-    - Location: Left
-    - Description: The camera feed of the selected webcam
-- Debug tab
+#### Debug tab
   - Only valid checkbox
     - Location: Bottom right
     - Description: Hides all keys that are not valid when checked
@@ -98,7 +95,10 @@ The application then uses MATLAB's image processing toolbox to detect the key an
   - k_len Field
     - Location: Bottom left
     - Description: Shows the length of the key in pixels
-- Both tabs
+#### Both tabs
+  - Camera Feed
+    - Location: Left
+    - Description: The camera feed of the selected webcam
   - Start Button
     - Location: Top left
     - Description: Starts the webcam feed
