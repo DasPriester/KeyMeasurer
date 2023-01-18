@@ -11,31 +11,31 @@ The application then uses MATLAB's image processing toolbox to detect the key an
 
 ## Installation
 ### Requirements
-- MATLAB
+- [MATLAB](https://www.mathworks.com/products/matlab.html)
   - Image Processing Toolbox
   - Image Acquisition Toolbox
   - Computer Vision Toolbox
   - USB Web Camera Support Package
 ### Instructions
-1. Download the repository
+1. [Download](https://github.com/DasPriester/KeyMeasurer/archive/refs/heads/main.zip) the repository
 2. Open MATLAB
 3. Open the [Project_app.mlapp](Projekt_app.mlapp) file in the MATLAB application designer
 4. Run the application
 
 ## Usage
 ### Getting Started
-1. Select a webcam by clicking on an entry of the [Webcam Selector](#main-tab)
-2. Press the [Start Button](#both-tabs) to start feeding the webcam to the application
+1. Select a webcam by clicking on an entry of the [Webcam Selector](#webcam-selector)
+2. Press the [Start Button](#start-button) to start feeding the webcam to the application
 ### Taking a Picture
-1. Press the [Picture Button](#both-tabs) to take a picture of the key
-2. When the frame around the [Camera Feed](#both-tabs) turns green, a key has been detected
-3. Copy the ID from the [ID Field](#both-tabs) 
+1. Press the [Picture Button](#picture-button) to take a picture of the key
+2. When the frame around the [Camera Feed](#camera-feed) turns green, a key has been detected
+3. Copy the ID from the [ID Field](#id-field) 
 ### Taking a Video
-1. Press the [Video Button](#both-tabs) to start recording a video of the key
-2. When the frame around the [Camera Feed](#both-tabs) turns green, a key has been detected
-3. Copy the ID from the [ID Field](#both-tabs) 
+1. Press the [Video Button](#video-button) to start recording a video of the key
+2. When the frame around the [Camera Feed](#camera-feed) turns green, a key has been detected
+3. Copy the ID from the [ID Field](#id-field)
 ### Quitting
-1. Press the [Start Button](#both-tabs)  again to stop the webcam feed
+1. Press the [Start Button](#start-button)  again to stop the webcam feed
 2. Close the application or press the stop button inside the MATLAB application designer
 
 ## Help
@@ -48,7 +48,7 @@ The application then uses MATLAB's image processing toolbox to detect the key an
 "My key is not detected (the frame around the camera feed is not green)"
 - Make sure that the key is in the frame of the camera feed (The application will not detect keys that are on the sides of the frame due to the cropping of the image)
 - Check if other keys are detected by the application (The application will only detect one key at a time)
-- Go to the [Debug tab](#debug-tab) and uncheck the [Only valid checboxk](#debug-tab) to see if the key is maybe not matching the validity criteria
+- Go to the [Debug tab](#debug-tab) and uncheck the [Only valid checboxk](#only-valid-checkbox) to see if the key is maybe not matching the validity criteria
 
 "The ID keeps changing/is not the same as previous IDs of the same key"
 - Our application uses a simple algorithm to turn the profile of a key into an ID, this algorithm is still in development and might not work at the moment
@@ -60,64 +60,64 @@ The application then uses MATLAB's image processing toolbox to detect the key an
 
 ### Buttons and Fields
 #### Main tab
-  - Webcam Selector
+  - Webcam Selector<a id="webcam-selector"></a>
     - Location: Top right
     - Description: List of all connected webcams. Select a webcam by clicking on an entry
 #### Debug tab
-  - Only valid checkbox
+  - Only valid checkbox<a id="only-valid-checkbox"></a>
     - Location: Bottom right
     - Description: Hides all keys that are not valid when checked
-  - Edge Detection / Segmentation / Rotation Plots
+  - Edge Detection / Segmentation / Rotation Plots<a id="esr-plots"></a>
     - Location: Center
     - Description: Plots of the edge detection, segmentation and rotation steps of the key detection algorithm
-  - Extra Plot
+  - Extra Plot<a id="extra-plot"></a>
     - Location: Bottom right
-    - Description: Extra plot for debugging. Can be used to plot the Mask, Key or Label steps of the key detection algorithm. Change the value of the _Extra Plot_ field by right clicking on the background of the application (not a button, field or plot) and selecting _Extra Plot_ -> ...
-  - Framerate Field
+    - Description: Extra plot for debugging. Can be used to plot the Mask, Key or Label steps of the key detection algorithm. Change the value of the [Extra Plot](#extra-plot) field by right clicking on the background of the application (not a button, field or plot) and selecting [Extra Plot](#extra-plot) -> ...
+  - Framerate Field<a id="framerate-field"></a>
     - Location: Top left
     - Description: Sets the framerate of the camera feed
-  - Recording Indicator
+  - Recording Indicator<a id="recording-indicator"></a>
     - Location: Top left
     - Description: Indicates if the application is recording a video
-  - Resolution Field
+  - Resolution Field<a id="resolution-field"></a>
     - Location: Bottom left
     - Description: Sets the resolution of the processed image
-  - Closing 1/2 Field
+  - Closing 1/2 Field<a id="closing-field"></a>
     - Location: Bottom left
     - Description: Sets the divisor for the closing operations of the key detection algorithm. The lower the value, the bigger the closing element.\
   _1_ for closing gaps between segments of the edge detection.\
   _2_ for closing gaps between segments of the segmentation
-  - Theta / Alpha Field
+  - Theta / Alpha Field<a id="theta-alpha-field"></a>
     - Location: Bottom left
     - Description: Shows the angle of the key in degrees.\
   _Alpha_ is the angle of the key in the image.\
     _Theta_ is the angle of the rotated key that is used to shear the image
-  - k_len Field
+  - k_len Field<a id="k_len-field"></a>
     - Location: Bottom left
     - Description: Shows the length of the key in pixels
 #### Both tabs
-  - Camera Feed
+  - Camera Feed<a id="camera-feed"></a>
     - Location: Left
     - Description: The camera feed of the selected webcam
-  - Start Button
+  - Start Button<a id="start-button"></a>
     - Location: Top left
     - Description: Starts the webcam feed
-  - Picture Button
+  - Picture Button<a id="picture-button"></a>
     - Location: Top left
     - Description: Takes a picture with the webcam
-  - Video Button
+  - Video Button<a id="video-button"></a>
     - Location: Top left
     - Description: Starts recording a video with the webcam
-  - Profile Plot
+  - Profile Plot<a id="profile-plot"></a>
     - Location: Bottom right
     - Description: Plot of the profile of the key
-  - ID Field
+  - ID Field<a id="id-field"></a>
     - Location: Bottom right
     - Description: ID of the key
 
 ## Technical Explanation (The Pipeline)
 ### Preprocessing
-Image is cropped to a square and resized to the resolution specified by the user in the _Resolution Field_
+Image is cropped to a square and resized to the resolution specified by the user in the [Resolution Field](#resolution-field)
 ### Edge Detection
 The image is converted to grayscale. Then a Canny edge detector is used to detect the edges of the key.
 ### Segmentation
