@@ -48,7 +48,7 @@ The application then uses MATLAB's image processing toolbox to detect the key an
 "My key is not detected (the frame around the camera feed is not green)"
 - Make sure that the key is in the frame of the camera feed (The application will not detect keys that are on the sides of the frame due to the cropping of the image)
 - Check if other keys are detected by the application (The application will only detect one key at a time)
-- Go to the [Debug tab](#debug-tab) and uncheck the [Only valid checboxk](#only-valid-checkbox) to see if the key is maybe not matching the validity criteria
+- Go to the [Debug tab](#debug-tab) and uncheck the [Only valid checkbox](#only-valid-checkbox) to see if the key is maybe not matching the validity criteria
 
 "The ID keeps changing/is not the same as previous IDs of the same key"
 - Our application uses a simple algorithm to turn the profile of a key into an ID, this algorithm is still in development and might not work at the moment
